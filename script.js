@@ -1,8 +1,10 @@
 let canvasW;
 let canvasH = 600;
 
-const colourfulBoxesCols = 3;
-const colourfulBoxesRows = 3;
+const matrix1Cols = 3;
+const matrix1Rows = 2;
+const matrix2Cols = 2;
+const matrix2Rows = 3;
 
 const matrix1 = [];
 const matrix2 = [];
@@ -11,9 +13,9 @@ const matrix3 = [];
 function setup() {
   canvasW = windowWidth;
   createCanvas(canvasW, canvasH);
-  createBoxes(colourfulBoxesCols, colourfulBoxesRows, matrix1, 25, 25);
-  createBoxes(colourfulBoxesCols, colourfulBoxesRows, matrix2, 236, 25);
-  createBoxes(colourfulBoxesCols, colourfulBoxesRows, matrix3, 447, 25);
+  createBoxes(matrix1Cols, matrix1Rows, matrix1, 25, 50);
+  createBoxes(matrix2Cols, matrix2Rows, matrix2, 236, 25);
+  createBoxes(matrix2Cols, matrix1Rows, matrix3, 397, 50);
 }
 
 
@@ -26,7 +28,7 @@ function draw() {
   
   fill(0);
   textSize(60);
-  text("+", 200, 100);
+  text("x", 200, 95);
 
   for (let i = 0; i < matrix2.length; i++) {
     drawBox(matrix2[i]);
@@ -34,7 +36,7 @@ function draw() {
   
   fill(0);
   textSize(60);
-  text("=", 412, 100);
+  text("=", 362, 100);
 
   for (let i = 0; i < matrix3.length; i++) {
     matrix3[i].n = matrix1[i].n + matrix2[i].n;
