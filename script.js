@@ -27,7 +27,7 @@ function draw() {
       drawBox(matrix1[i][j]);
     }
   }
-  
+
   fill(0);
   textSize(60);
   text("x", 200, 95);
@@ -37,7 +37,7 @@ function draw() {
       drawBox(matrix2[i][j]);
     }
   }
-  
+
   fill(0);
   textSize(60);
   text("=", 362, 100);
@@ -68,7 +68,7 @@ function createBoxes(cols, rows, matrix, boxX, boxY) {
   for (let i = 0; i < rows; i++) {
     let row = [];
     for (let j = 0; j < cols; j++) {
-      const box = {x: x, y: y, s: 40, colour: {r: Math.floor(Math.random() * 255), g: Math.floor(Math.random() * 255), b: Math.floor(Math.random() * 255)}, n: Math.floor(Math.random() * 20)};
+      const box = { x: x, y: y, s: 40, colour: { r: Math.floor(Math.random() * 255), g: Math.floor(Math.random() * 255), b: Math.floor(Math.random() * 255) }, n: Math.floor(Math.random() * 20) };
       row.push(box);
       drawBox(box);
       x += 50;
@@ -81,9 +81,13 @@ function createBoxes(cols, rows, matrix, boxX, boxY) {
 
 function totalMatrix(m1, m2, m3) {
   for (let i = 0; i < matrix1Rows; i++) {
-    let sum = 0;
-    for (let j = 0; j < matrix1Cols; j++) {
-      sum += 0;
+    for (let c = 0; c < matrix2Cols; c++) {
+      let sum = 0;
+      for (let j = 0; j < matrix1Cols; j++) {
+        sum += m1[i][j].n * m2[j][c].n;
+        console.log(m1[i][j].n + " * " + m2[j][c].n + " = " + sum);
+      }
+      m3[i][c].n = sum;
     }
   }
 }
